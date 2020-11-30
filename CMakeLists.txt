@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.10)
+project(Mobil2an)
+set(OpenGlLinkers -lglut -lGLU -lGL)
+add_executable(Mobil2an main.cpp )
+target_link_libraries(Mobil2an ${OpenGlLinkers})

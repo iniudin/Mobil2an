@@ -15,6 +15,26 @@ void init()
     gluOrtho2D(0, WIDTH, 0, HEIGHT);
 }
 
+void drawText(std::string text, void *font, int x, int y)
+{
+
+    glPushMatrix();
+    glColor3f(0.0f, 0.0f, 1.0f);
+    glRasterPos2i(x, y);
+    for (std::string::iterator i = text.begin(); i != text.end(); ++i)
+    {
+        char c = *i;
+        glutBitmapCharacter(font, c);
+    }
+    glPopMatrix();
+}
+
+void Timer(int value)
+{
+    glutTimerFunc(1000 / 60, Timer, value);
+    glutPostRedisplay();
+}
+
 void display()
 {
     glClear(GL_COLOR_BUFFER_BIT);
@@ -22,13 +42,8 @@ void display()
     glColor3f(0.0f, 1.0f, 0.0f);
     glVertex2d(WIDTH / 2, HEIGHT / 2);
     glEnd();
+    drawText("HELLO WOIII", GLUT_BITMAP_9_BY_15, 50, 50);
     glFlush();
-}
-
-void Timer(int value)
-{
-    glutTimerFunc(1000 / 60, Timer, value);
-    glutPostRedisplay();
 }
 
 int main(int argc, char **argv)

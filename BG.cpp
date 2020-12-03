@@ -3,12 +3,12 @@
 #include <GL/glut.h>
 
 void display();
-
+int angle;
 int main(int argc, char** argv)
 {
     glutInit(&argc, argv);
     glutInitWindowSize(500,500);
-    glutInitWindowPosition(500,500);
+    glutInitWindowPosition(0,0);
     glutCreateWindow("Mobil");
     glutDisplayFunc(display);
     gluOrtho2D(-20, 30 ,-20 , 30);
@@ -17,12 +17,11 @@ int main(int argc, char** argv)
 
 void display()
 {
-    glClear(GL_COLOR_BUFFER_BIT);
-
     //Kotak Gede//
+    glClear(GL_COLOR_BUFFER_BIT);
     glMatrixMode(GL_MODELVIEW);
-    glColor3f(1, 1, 1);
-    glBegin(GL_QUAD_STRIP);
+    glColor3f(1, 0.4, 0);
+    glBegin(GL_QUADS);
         glVertex2f(0, 0);
         glVertex2f(14, 0);
         glVertex2f(14, 20);
@@ -31,9 +30,8 @@ void display()
     glFlush();
 
     //Kotak Tengah//
-    glMatrixMode(GL_MODELVIEW);
-    glColor3f(0, 0, 1);
-    glBegin(GL_QUAD_STRIP);
+    glColor3f(1, 1, 1);
+    glBegin(GL_QUADS);
         glVertex2f(4, 0);
         glVertex2f(10, 0);
         glVertex2f(10, 20);
@@ -42,9 +40,8 @@ void display()
     glFlush();
 
     //Kotak Pinggir Kiri Bawah//
-    glMatrixMode(GL_MODELVIEW);
     glColor3f(0, 1, 0);
-    glBegin(GL_QUAD_STRIP);
+    glBegin(GL_QUADS);
         glVertex2f(1, 4);
         glVertex2f(3, 4);
         glVertex2f(3, 8);
@@ -53,9 +50,8 @@ void display()
     glFlush();
 
     //Kotak Pinggir Kiri Atas//
-    glMatrixMode(GL_MODELVIEW);
     glColor3f(0, 1, 0);
-    glBegin(GL_QUAD_STRIP);
+    glBegin(GL_QUADS);
         glVertex2f(1, 12);
         glVertex2f(3, 12);
         glVertex2f(3, 16);
@@ -64,9 +60,8 @@ void display()
     glFlush();
 
     //Kotak Pinggir Kanan Bawah//
-    glMatrixMode(GL_MODELVIEW);
     glColor3f(0, 1, 0);
-    glBegin(GL_QUAD_STRIP);
+    glBegin(GL_QUADS);
         glVertex2f(11, 4);
         glVertex2f(13, 4);
         glVertex2f(13, 8);
@@ -75,9 +70,8 @@ void display()
     glFlush();
 
     //Kotak Pinggir Kanan Atas//
-    glMatrixMode(GL_MODELVIEW);
     glColor3f(0, 1, 0);
-    glBegin(GL_QUAD_STRIP);
+    glBegin(GL_QUADS);
         glVertex2f(11, 12);
         glVertex2f(13, 12);
         glVertex2f(13, 16);

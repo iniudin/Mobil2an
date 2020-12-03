@@ -1,9 +1,6 @@
 #include "cross_platform/GLUT.hpp"
 #include <iostream>
-
-// Constants
-const int WIDTH = 680, HEIGHT = 480;
-const char programName[] = "Mobil2an";
+#include "constants.cpp"
 
 void init()
 {

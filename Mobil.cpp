@@ -3,12 +3,12 @@
 #include <GL/glut.h>
 
 void display();
-
+int angle;
 int main(int argc, char** argv)
 {
     glutInit(&argc, argv);
     glutInitWindowSize(500,500);
-    glutInitWindowPosition(500,500);
+    glutInitWindowPosition(0,0);
     glutCreateWindow("Mobil");
     glutDisplayFunc(display);
     gluOrtho2D(-20, 30 ,-20 , 30);
@@ -17,21 +17,19 @@ int main(int argc, char** argv)
 
 void display()
 {
-    glClear(GL_COLOR_BUFFER_BIT);
-
     //Kotak Badan mobil//
+    glClear(GL_COLOR_BUFFER_BIT);
     glMatrixMode(GL_MODELVIEW);
     glColor3f(0, 0, 1);
     glBegin(GL_QUADS);
         glVertex2f(1, 0);
-        glVertex2f(1, 10);
+        glVertex2f(15, 0);
         glVertex2f(15, 20);
-        glVertex2f(15, 20);
+        glVertex2f(1, 20);
     glEnd();
     glFlush();
 
     //Kotak Tengah Mobil//
-    glMatrixMode(GL_MODELVIEW);
     glColor3f(1, 1, 1);
     glBegin(GL_QUADS);
         glVertex2f(1, 4);
@@ -42,7 +40,6 @@ void display()
     glFlush();
 
     //Kotak Tengah Tengah mobil//
-    glMatrixMode(GL_MODELVIEW);
     glColor3f(0, 0, 1);
     glBegin(GL_QUADS);
         glVertex2f(4, 6);
@@ -53,7 +50,6 @@ void display()
     glFlush();
 
     //Mocong Mobil//
-    glMatrixMode(GL_MODELVIEW);
     glColor3f(0, 1, 1);
     glBegin(GL_QUADS);
         glVertex2f(4, 13);
@@ -64,7 +60,6 @@ void display()
     glFlush();
 
     //Lampu Kiri Mobil//
-    glMatrixMode(GL_MODELVIEW);
     glColor3f(1, 1, 0);
     glBegin(GL_QUADS);
         glVertex2f(1, 18);
@@ -75,7 +70,6 @@ void display()
     glFlush();
 
     //Lampu Kanan Mobil//
-    glMatrixMode(GL_MODELVIEW);
     glColor3f(1, 1, 0);
     glBegin(GL_QUADS);
         glVertex2f(12, 18);
@@ -86,7 +80,6 @@ void display()
     glFlush();
 
     //Pelek Depan//
-    glMatrixMode(GL_MODELVIEW);
     glColor3f(0, 1, 1);
     glBegin(GL_QUADS);
         glVertex2f(4, 19);
@@ -97,7 +90,6 @@ void display()
     glFlush();
 
     //Lampu Send Kiri Kiri//
-    glMatrixMode(GL_MODELVIEW);
     glColor3f(1, 1, 0);
     glBegin(GL_QUADS);
         glVertex2f(2, 0);
@@ -108,7 +100,6 @@ void display()
     glFlush();
 
     //Lampu Send Kiri Kanan//
-    glMatrixMode(GL_MODELVIEW);
     glColor3f(1, 0, 0);
     glBegin(GL_QUADS);
         glVertex2f(3.5, 0);
@@ -119,7 +110,6 @@ void display()
     glFlush();
 
     //Lampu Send Kanan Kiri//
-    glMatrixMode(GL_MODELVIEW);
     glColor3f(1, 1, 0);
     glBegin(GL_QUADS);
         glVertex2f(11, 0);
@@ -130,7 +120,6 @@ void display()
     glFlush();
 
     //Lampu Send Kanan Kanan//
-    glMatrixMode(GL_MODELVIEW);
     glColor3f(1, 0, 0);
     glBegin(GL_QUADS);
         glVertex2f(12.5, 0);
@@ -141,7 +130,6 @@ void display()
     glFlush;
 
     //Spion Kiri//
-    glMatrixMode(GL_MODELVIEW);
     glColor3f(0, 0, 0);
     glBegin(GL_QUADS);
         glVertex2f(0, 12);
@@ -152,7 +140,6 @@ void display()
     glFlush();
 
     //Spion Kanan//
-    glMatrixMode(GL_MODELVIEW);
     glColor3f(0, 0, 0);
     glBegin(GL_QUADS);
         glVertex2f(14, 12);
@@ -163,7 +150,6 @@ void display()
     glFlush();
 
     //Strip Kiri//
-    glMatrixMode(GL_MODELVIEW);
     glColor3f(0, 0, 1);
     glBegin(GL_QUADS);
         glVertex2f(1, 7);
@@ -174,7 +160,6 @@ void display()
     glFlush();
 
     //Strip Kanan//
-    glMatrixMode(GL_MODELVIEW);
     glColor3f(0, 0, 1);
     glBegin(GL_QUADS);
         glVertex2f(12, 7);
@@ -185,7 +170,6 @@ void display()
     glFlush();
 
     //Putih Putih DiPinggir//
-    glMatrixMode(GL_MODELVIEW);
     glColor3f(1, 1, 1);
     glBegin(GL_POLYGON);
         glVertex2f(1, 8);
@@ -197,7 +181,6 @@ void display()
     glFlush();
 
     //Putih Putih DiPinggir//
-    glMatrixMode(GL_MODELVIEW);
     glColor3f(1, 1, 1);
     glBegin(GL_POLYGON);
         glVertex2f(4, 10);
@@ -210,7 +193,6 @@ void display()
     glFlush();
 
     //Putih Putih DiPinggir//
-    glMatrixMode(GL_MODELVIEW);
     glColor3f(1, 1, 1);
     glBegin(GL_POLYGON);
         glVertex2f(12, 10);
@@ -222,7 +204,6 @@ void display()
     glFlush();
 
     //Putih Putih DiPinggir//
-    glMatrixMode(GL_MODELVIEW);
     glColor3f(1, 1, 1);
     glBegin(GL_QUADS);
         glVertex2f(12, 7);
@@ -233,7 +214,6 @@ void display()
     glFlush();
 
     //Putih Putih DiPinggir//
-    glMatrixMode(GL_MODELVIEW);
     glColor3f(1, 1, 1);
     glBegin(GL_QUADS);
         glVertex2f(12, 6);
@@ -244,7 +224,6 @@ void display()
     glFlush();
 
     //Putih Putih DiPinggir//
-    glMatrixMode(GL_MODELVIEW);
     glColor3f(1, 1, 1);
     glBegin(GL_QUADS);
         glVertex2f(4, 6);

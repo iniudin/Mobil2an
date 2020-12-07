@@ -36,12 +36,13 @@ void display()
     glBegin(GL_POLYGON);
         glVertex2f(10, 10);
         glVertex2f(60, 10);
-        glVertex2f(60, 50);
-        glVertex2f(58, 58);
-        glVertex2f(54, 60);
-        glVertex2f(16, 60);
-        glVertex2f(12, 58);
-        glVertex2f(10, 50);
+        glVertex2f(60, 55);
+        glVertex2f(58, 62);
+        glVertex2f(55, 65);
+        glVertex2f(35, 67);
+        glVertex2f(15, 65);
+        glVertex2f(12, 62);
+        glVertex2f(10, 55);
     glEnd();
     glFlush();
 

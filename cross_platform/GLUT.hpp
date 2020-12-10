@@ -19,10 +19,16 @@
 /* Headers */
 #if PLATFORM == PLATFORM_WINDOWS
 #include <windows.h>
+#include <GL/gl.h>
+#include <GL/glu.h>
 #include <GL/glut.h>
 #elif PLATFORM == PLATFORM_MAC
+#include <GLUT/gl.h>
+#include <GLUT/glu.h>
 #include <GLUT/glut.h>
 #elif PLATFORM == PLATFORM_LINUX
+#include <GL/gl.h>
+#include <GL/glu.h>
 #include <GL/glut.h>
 #endif
 

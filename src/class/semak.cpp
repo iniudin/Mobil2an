@@ -7,6 +7,7 @@ void semak()
     glClear(GL_COLOR_BUFFER_BIT);
 
     glMatrixMode(GL_MODELVIEW);
+    glScaled(10, 10, 0);
     glColor4f(1.0f, 1.0f, 1.0f, 0.0f);
     glBegin(GL_QUADS);
     glVertex2d(-500, 500);

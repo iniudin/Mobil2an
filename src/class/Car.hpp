@@ -1,11 +1,19 @@
 #ifndef __CAR
 #define __CAR
+#include <string>
 
 class Car
 {
+private:
+    std::string color;
+
 public:
-    int car_x, car_y;
+    Car(const char *);
+    int car_x,
+        car_y;
     void draw();
-    void move(double x, double y);
+    void Respawn();
+    void moveRight(double x);
+    void moveLeft(double x);
 };
 #endif

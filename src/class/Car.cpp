@@ -2,12 +2,27 @@
 #include <GL/glu.h>
 #include <GL/glut.h>
 #include "Car.hpp"
+#include <iostream>
+Car::Car(const char *color)
+{
+    this->color = color;
+    this->car_x = 10;
+    this->car_x = 10;
+}
 
 void Car::draw()
 {
     //bodi utama
     glMatrixMode(GL_MODELVIEW);
-    glColor3f(1.0, 0.0, 0.0);
+    glScaled(0.1, 0.2, 0);
+    if (this->color == "red")
+    {
+        glColor3ub(255, 0, 0);
+    }
+    else if (this->color == "purple")
+    {
+        glColor3ub(255, 0, 255);
+    }
     glBegin(GL_POLYGON);
     glVertex2f(10, 10);
     glVertex2f(60, 10);
@@ -153,12 +168,25 @@ void Car::draw()
     glEnd();
 }
 
-void Car::move(double x, double y)
+void Car::moveRight(double x)
 {
-    this->car_x = x;
-    this->car_y = y;
     glPushMatrix();
     glTranslated(car_x, car_y, 0.0);
+    glPopMatrix();
+}
+
+void Car::moveLeft(double x)
+{
+    glPushMatrix();
+    glTranslated(car_x, car_y, 0.0);
+    this->draw();
+    glPopMatrix();
+}
+
+void Car::Respawn()
+{
+    glPushMatrix();
+    glTranslated(this->car_x, this->car_y, 0.0);
     this->draw();
     glPopMatrix();
 }

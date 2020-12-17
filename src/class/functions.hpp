@@ -1,12 +1,16 @@
+#ifndef __Functions
+#define __Functions
+
 #include <GL/gl.h>
 #include <GL/glu.h>
 #include <GL/glut.h>
 #include <iostream>
 
-void drawText(std::string text, void *font, int x, int y)
+void drawText(std::string text, void *font, int x, int y, double R, double G, double B)
 {
     // https://stackoverflow.com/questions/14318/using-glut-bitmap-fonts
     glPushMatrix();
+    glColor3ub(R, G, B);
     glRasterPos2i(x, y);
     for (std::string::iterator i = text.begin(); i != text.end(); ++i)
     {
@@ -79,3 +83,4 @@ void bekgron()
     glEnd();
     glFlush();
 }
+#endif

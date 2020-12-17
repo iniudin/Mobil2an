@@ -3,11 +3,13 @@
 #include <GL/glut.h>
 #include "Car.hpp"
 #include <iostream>
-Car::Car(const char *color)
+
+Car::Car(const char *color, float pos)
 {
     this->color = color;
-    this->car_x = 10;
-    this->car_x = 10;
+    this->pos = pos;
+    this->car_x = 40;
+    this->car_y = 0;
 }
 
 void Car::draw()
@@ -166,21 +168,6 @@ void Car::draw()
     glVertex2f(12, 18);
     glVertex2f(10, 16);
     glEnd();
-}
-
-void Car::moveRight(double x)
-{
-    glPushMatrix();
-    glTranslated(car_x, car_y, 0.0);
-    glPopMatrix();
-}
-
-void Car::moveLeft(double x)
-{
-    glPushMatrix();
-    glTranslated(car_x, car_y, 0.0);
-    this->draw();
-    glPopMatrix();
 }
 
 void Car::Respawn()

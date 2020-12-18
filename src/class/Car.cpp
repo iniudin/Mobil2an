@@ -4,12 +4,10 @@
 #include "Car.hpp"
 #include <iostream>
 
-Car::Car(const char *color, float pos)
+Car::Car(const char *color)
 {
     this->color = color;
-    this->pos = pos;
     this->car_x = 40;
-    this->car_y = 0;
 }
 
 void Car::draw()
@@ -174,6 +172,14 @@ void Car::Respawn()
 {
     glPushMatrix();
     glTranslated(this->car_x, this->car_y, 0.0);
+    this->draw();
+    glPopMatrix();
+}
+
+void Car::OtherRespawn(double x, double y)
+{
+    glPushMatrix();
+    glTranslated(x, y, 0.0);
     this->draw();
     glPopMatrix();
 }

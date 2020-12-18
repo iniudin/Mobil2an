@@ -8,11 +8,11 @@ private:
     std::string color;
 
 public:
-    Car(const char *, float pos);
-    float pos;
+    Car(const char *);
     float car_x,
         car_y;
     void draw();
     void Respawn();
+    void OtherRespawn(double x, double y);
 };
 #endif

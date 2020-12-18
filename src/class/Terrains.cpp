@@ -6,7 +6,7 @@
 void Terrains::drawStreet()
 {
     glMatrixMode(GL_MODELVIEW);
-    glColor3ub(128, 128, 128);
+    glColor3ub(163, 163, 163);
     glBegin(GL_QUADS);
     glVertex2f(20, 0);
     glVertex2f(20, 100);
@@ -14,7 +14,7 @@ void Terrains::drawStreet()
     glVertex2f(80, 0);
     glEnd();
 
-    glColor3ub(255, 255, 255);
+    glColor3ub(238, 238, 238);
     glBegin(GL_QUADS);
     glVertex2f(20, 0);   // kiri bawah
     glVertex2f(20, 100); // kiri atas
@@ -22,7 +22,7 @@ void Terrains::drawStreet()
     glVertex2f(22, 0);   // kanan bawah
     glEnd();
 
-    glColor3ub(255, 255, 255);
+    glColor3ub(238, 238, 238);
     glBegin(GL_QUADS);
     glVertex2f(78, 0);   // kiri bawah
     glVertex2f(78, 100); // kiri atas

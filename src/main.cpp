@@ -18,13 +18,12 @@ Car *cars2 = new Car("purple");
 Car *cars3 = new Car("purple");
 
 char programName[] = "Mobil2an";
-int FPS = 40;
+int FPS = 60;
 int GAMESTATE = 0;
 int score = 0;
+int highScore = 0;
 bool gameOver = false;
-
-// int pos[MAXCARS];
-// int lane[MAXCARS];
+double speed = 0.5;
 
 double lane = 30;
 double positiion = 100;
@@ -40,10 +39,12 @@ void init()
 
 void mainMenu()
 {
-    drawBox(25, 80, 75, 85, 0, 0, 0);
-    drawText("Mobil2an Geming", GLUT_BITMAP_HELVETICA_18, 30, 81, 255, 0, 255);
-    drawBox(25, 70, 75, 75, 0, 0, 0);
-    drawText("Press S to Start", GLUT_BITMAP_HELVETICA_18, 30, 71, 255, 0, 255);
+    drawBox(25, 80, 75, 85, 238, 238, 238);
+    drawText("Mobil2an Geming", GLUT_BITMAP_HELVETICA_18, 40, 81, 43, 51, 95);
+
+    drawBox(25, 40, 75, 50, 0, 0, 0);
+    drawText("Press S to Start", GLUT_BITMAP_HELVETICA_18, 30, 41, 43, 51, 95);
+    drawText("Press X to Exit", GLUT_BITMAP_HELVETICA_18, 30, 45, 43, 51, 95);
 }
 
 void setOtherCar()
@@ -52,33 +53,31 @@ void setOtherCar()
     cars2->OtherRespawn(lane_1, positiion_1);
     cars3->OtherRespawn(lane_2, positiion_2);
 
-    positiion -= 0.7;
-    positiion_1 -= 0.7;
-    positiion_2 -= 0.7;
+    positiion -= speed;
+    positiion_1 -= speed;
+    positiion_2 -= speed;
     if (positiion <= -10)
     {
         positiion = 100;
-        // srand(time(NULL));
         lane = 25 + (std::rand() % (70 - 25 + 1));
-        FPS += 1;
-        score += 10;
+        score += 1;
     }
     if (positiion_1 <= -10)
     {
         positiion_1 = 100;
-        // srand(time(NULL));
         lane_1 = 25 + (std::rand() % (70 - 25 + 1));
-        FPS += 1;
-        score += 10;
+        score += 1;
     }
 
     if (positiion_2 <= -10)
     {
         positiion_2 = 100;
-        // srand(time(NULL));
         lane_2 = 25 + (std::rand() % (70 - 25 + 1));
-        FPS += 1;
-        score += 10;
+        score += 1;
+    }
+    if (score % 2 == 1)
+    {
+        speed += 0.0001;
     }
 
     if ((abs(cars0->car_x - lane) < 6) && (positiion <= 10))
@@ -102,7 +101,11 @@ void setOtherCar()
         positiion_1 = 125;
         lane_2 = 70;
         positiion_2 = 150;
-        FPS = 40;
+        speed = 0.5;
+        if (score >= highScore)
+        {
+            highScore = score;
+        }
         score = 0;
     }
 }
@@ -112,13 +115,22 @@ void onGame()
     setOtherCar();
     cars0->Respawn();
 
-    char text_fps[20];
-    sprintf(text_fps, "SPEED: %d", FPS);
-    drawText(text_fps, GLUT_BITMAP_HELVETICA_18, 0, 95, 238, 238, 238);
-
+    if (highScore)
+    {
+        char text_highscore[20];
+        sprintf(text_highscore, "HighScore: %i", highScore);
+        drawText(text_highscore, GLUT_BITMAP_HELVETICA_18, 0, 96, 238, 238, 238);
+    }
     char text_score[20];
-    sprintf(text_score, "SCORE: %i", score);
-    drawText(text_score, GLUT_BITMAP_HELVETICA_18, 0, 85, 238, 238, 238);
+    sprintf(text_score, "Score: %i", score);
+    drawText(text_score, GLUT_BITMAP_HELVETICA_18, 0, 93, 238, 238, 238);
+
+    char text_fps[10] = "Speed:";
+    drawText(text_fps, GLUT_BITMAP_HELVETICA_18, 0, 90, 238, 238, 238);
+
+    char text_speed[20];
+    sprintf(text_speed, "%f km/s", speed * 100);
+    drawText(text_speed, GLUT_BITMAP_HELVETICA_18, 0, 87, 238, 238, 238);
 }
 
 void gameState()
@@ -145,6 +157,10 @@ void onMainMenu(unsigned char key, int x, int y)
     {
         GAMESTATE = 1;
     }
+    else if (key == 'x' || key == 'X')
+    {
+        exit(0);
+    }
 }
 
 void onKeyboard(int key, int x, int y)
@@ -159,7 +175,6 @@ void onKeyboard(int key, int x, int y)
     }
     if (key == GLUT_KEY_UP)
     {
-        FPS += 1;
     }
 
     if (cars0->car_x <= 22)

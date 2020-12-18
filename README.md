@@ -2,7 +2,7 @@
 
 Repository untuk Grafika Komputer
 
-## Kontributor:
+## Kontributor
 
 - Achmad Aqrom Roid N.H 192410103034
 - Ahmad Syaifudin 192410103093

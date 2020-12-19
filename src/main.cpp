@@ -14,15 +14,17 @@ GLdouble pixel = 100;
 Terrains *terrains = new Terrains();
 Car *cars0 = new Car("red");
 Car *cars1 = new Car("purple");
-Car *cars2 = new Car("purple");
-Car *cars3 = new Car("purple");
+Car *cars2 = new Car("blue");
+Car *cars3 = new Car("yellow");
 
-char programName[] = "Mobil2an";
+char programName[] = "Mobil2an Geming";
 int FPS = 60;
 int GAMESTATE = 0;
 int score = 0;
+int temp_score = 0;
 int highScore = 0;
 bool gameOver = false;
+bool gamePaused = false;
 double speed = 0.5;
 
 double lane = 30;
@@ -42,9 +44,26 @@ void mainMenu()
     drawBox(25, 80, 75, 85, 238, 238, 238);
     drawText("Mobil2an Geming", GLUT_BITMAP_HELVETICA_18, 40, 81, 43, 51, 95);
 
-    drawBox(25, 40, 75, 50, 0, 0, 0);
-    drawText("Press S to Start", GLUT_BITMAP_HELVETICA_18, 30, 41, 43, 51, 95);
-    drawText("Press X to Exit", GLUT_BITMAP_HELVETICA_18, 30, 45, 43, 51, 95);
+    if (gameOver)
+    {
+        drawBox(30, 55, 70, 65, 212, 24, 108);
+        drawText("GAME OVER!!!", GLUT_BITMAP_HELVETICA_18, 40, 61, 238, 238, 238);
+        char text_score[20];
+        sprintf(text_score, "Your Score: %i", temp_score);
+        drawText(text_score, GLUT_BITMAP_HELVETICA_18, 40, 57, 238, 238, 238);
+    }
+    else if (gamePaused)
+    {
+        drawBox(30, 55, 70, 65, 212, 24, 108);
+        drawText("Game Paused!!!", GLUT_BITMAP_HELVETICA_18, 40, 59, 238, 238, 238);
+    }
+    drawBox(25, 30, 75, 42, 57, 92, 152);
+    drawText("Press S to Start / Continue", GLUT_BITMAP_HELVETICA_18, 30, 37, 238, 238, 238);
+    drawText("Press X to Exit / Pause", GLUT_BITMAP_HELVETICA_18, 30, 33, 238, 238, 238);
+
+    drawBox(25, 22, 75, 30, 30, 144, 255);
+    drawText("Controller: ", GLUT_BITMAP_HELVETICA_18, 30, 27, 238, 238, 238);
+    drawText("Right <- | -> Left", GLUT_BITMAP_HELVETICA_18, 30, 24, 238, 238, 238);
 }
 
 void setOtherCar()
@@ -106,7 +125,9 @@ void setOtherCar()
         {
             highScore = score;
         }
+        temp_score = score;
         score = 0;
+        gameOver = true;
     }
 }
 
@@ -138,7 +159,7 @@ void gameState()
 
     glClear(GL_COLOR_BUFFER_BIT);
     glMatrixMode(GL_MODELVIEW);
-    glClearColor(0.098, 0.584, 0.611, 0);
+    drawBox(0, 100, 100, 0, 2, 81, 89);
     terrains->drawStreet();
     if (GAMESTATE == 1)
     {
@@ -156,10 +177,19 @@ void onMainMenu(unsigned char key, int x, int y)
     if (key == 's' || key == 'S')
     {
         GAMESTATE = 1;
+        gamePaused = false;
     }
     else if (key == 'x' || key == 'X')
     {
-        exit(0);
+        if (GAMESTATE == 1)
+        {
+            GAMESTATE = 0;
+            gamePaused = true;
+        }
+        else
+        {
+            exit(0);
+        }
     }
 }
 

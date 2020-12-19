@@ -17,11 +17,20 @@ void Car::draw()
     glScaled(0.1, 0.2, 0);
     if (this->color == "red")
     {
-        glColor3ub(255, 0, 0);
+        glColor3ub(242, 34, 51);
     }
     else if (this->color == "purple")
     {
-        glColor3ub(255, 0, 255);
+        glColor3ub(191, 5, 242);
+    }
+
+    else if (this->color == "blue")
+    {
+        glColor3ub(167, 217, 212);
+    }
+    else if (this->color == "yellow")
+    {
+        glColor3ub(242, 208, 34);
     }
     glBegin(GL_POLYGON);
     glVertex2f(10, 10);
@@ -37,7 +46,7 @@ void Car::draw()
 
     //kaca depan
     glMatrixMode(GL_MODELVIEW);
-    glColor3f(0.0, 0.0, 0.0);
+    glColor3ub(62, 62, 64);
     glBegin(GL_POLYGON);
     glVertex2f(24, 40);
     glVertex2f(18, 46);
@@ -49,7 +58,7 @@ void Car::draw()
 
     //kaca belakang
     glMatrixMode(GL_MODELVIEW);
-    glColor3f(0.0, 0.0, 0.0);
+    glColor3ub(62, 62, 64);
     glBegin(GL_QUADS);
     glVertex2f(26, 24);
     glVertex2f(20, 20);
@@ -59,7 +68,7 @@ void Car::draw()
 
     //bodi belakang
     glMatrixMode(GL_MODELVIEW);
-    glColor3f(0.0, 0.0, 0.0);
+    glColor3ub(62, 62, 64);
     glBegin(GL_QUADS);
     glVertex2f(20, 12);
     glVertex2f(18, 10);
@@ -69,7 +78,7 @@ void Car::draw()
 
     //kaca kanan
     glMatrixMode(GL_MODELVIEW);
-    glColor3f(0.0, 0.0, 0.0);
+    glColor3ub(62, 62, 64);
     glBegin(GL_QUADS);
     glVertex2f(48, 34);
     glVertex2f(48, 28);
@@ -79,7 +88,7 @@ void Car::draw()
 
     //kaca kiri
     glMatrixMode(GL_MODELVIEW);
-    glColor3f(0.0, 0.0, 0.0);
+    glColor3ub(62, 62, 64);
     glBegin(GL_QUADS);
     glVertex2f(22, 34);
     glVertex2f(22, 28);
@@ -89,7 +98,7 @@ void Car::draw()
 
     //lampu kanan
     glMatrixMode(GL_MODELVIEW);
-    glColor3f(1.0, 1.0, 0.0);
+    glColor3ub(242, 185, 80);
     glBegin(GL_QUADS);
     glVertex2f(60, 12);
     glVertex2f(54, 12);
@@ -99,7 +108,7 @@ void Car::draw()
 
     //lampu kiri
     glMatrixMode(GL_MODELVIEW);
-    glColor3f(1.0, 1.0, 0.0);
+    glColor3ub(242, 185, 80);
     glBegin(GL_QUADS);
     glVertex2f(10, 12);
     glVertex2f(16, 12);
@@ -109,7 +118,7 @@ void Car::draw()
 
     //lampu depan kiri
     glMatrixMode(GL_MODELVIEW);
-    glColor3f(1.0, 1.0, 0.0);
+    glColor3ub(242, 185, 80);
     glBegin(GL_QUADS);
     glVertex2f(16, 60);
     glVertex2f(12, 58);
@@ -119,7 +128,7 @@ void Car::draw()
 
     //lampu depan kanan
     glMatrixMode(GL_MODELVIEW);
-    glColor3f(1.0, 1.0, 0.0);
+    glColor3ub(242, 185, 80);
     glBegin(GL_QUADS);
     glVertex2f(54, 60);
     glVertex2f(58, 58);

@@ -27,6 +27,7 @@ bool gameOver = false;
 bool gamePaused = false;
 double speed = 0.5;
 
+// lane x, posotion y
 double lane = 30;
 double positiion = 100;
 double lane_1 = 50;
@@ -75,6 +76,7 @@ void setOtherCar()
     positiion -= speed;
     positiion_1 -= speed;
     positiion_2 -= speed;
+
     if (positiion <= -10)
     {
         positiion = 100;
@@ -99,6 +101,11 @@ void setOtherCar()
         speed += 0.0001;
     }
 
+    int test = abs(cars0->car_x - lane);
+    std::cout << test << "\n"
+              << positiion << std::endl;
+
+    // Collision
     if ((abs(cars0->car_x - lane) < 6) && (positiion <= 10))
     {
         GAMESTATE = 0;
@@ -159,8 +166,10 @@ void gameState()
 
     glClear(GL_COLOR_BUFFER_BIT);
     glMatrixMode(GL_MODELVIEW);
+    // latar belakang
     drawBox(0, 100, 100, 0, 2, 81, 89);
     terrains->drawStreet();
+    // jika gamestate = 1, mulai
     if (GAMESTATE == 1)
     {
         onGame();
@@ -176,11 +185,14 @@ void onMainMenu(unsigned char key, int x, int y)
 {
     if (key == 's' || key == 'S')
     {
+        // start, continue
         GAMESTATE = 1;
         gamePaused = false;
+        gameOver = false;
     }
     else if (key == 'x' || key == 'X')
     {
+        // pouse, exit
         if (GAMESTATE == 1)
         {
             GAMESTATE = 0;
@@ -203,9 +215,6 @@ void onKeyboard(int key, int x, int y)
     {
         cars0->car_x -= 1;
     }
-    if (key == GLUT_KEY_UP)
-    {
-    }
 
     if (cars0->car_x <= 22)
     {
@@ -219,6 +228,7 @@ void onKeyboard(int key, int x, int y)
 
 void Timer(int value)
 {
+    // 1000 atomic = 1 detik
     glutTimerFunc(1000 / FPS, Timer, value);
     glutPostRedisplay();
 }

@@ -130,7 +130,7 @@ void setOtherCar()
         speed = 0.5;
         if (score >= highScore)
         {
-            highScore = score;
+            saveNewHighScore(score);
         }
         temp_score = score;
         score = 0;
@@ -143,12 +143,11 @@ void onGame()
     setOtherCar();
     cars0->Respawn();
 
-    if (highScore)
-    {
-        char text_highscore[20];
-        sprintf(text_highscore, "HighScore: %i", highScore);
-        drawText(text_highscore, GLUT_BITMAP_HELVETICA_18, 0, 96, 238, 238, 238);
-    }
+    char text_highscore[20];
+    highScore = getHighScore();
+
+    sprintf(text_highscore, "HighScore: %i", highScore);
+    drawText(text_highscore, GLUT_BITMAP_HELVETICA_18, 0, 96, 238, 238, 238);
     char text_score[20];
     sprintf(text_score, "Score: %i", score);
     drawText(text_score, GLUT_BITMAP_HELVETICA_18, 0, 93, 238, 238, 238);
